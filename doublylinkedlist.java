@@ -91,6 +91,15 @@ public class DoublyLinkedList {
         }
         return currentNode;
     }
+    public <E> boolean set(int index, E value){
+        Node currentNode = this.get(index);
+        if (currentNode!=null){
+            currentNode.value = value;
+            return true;
+        }else {
+            return false;
+        }
+    }
 }
 
 
