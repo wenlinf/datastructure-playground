@@ -100,6 +100,43 @@ public class DoublyLinkedList {
             return false;
         }
     }
+    public <E> boolean insert(int index, E val){
+        Node newNode = new Node(val);
+        if (index<0||index>=this.length) return false;
+        if (index==0) {
+            this.unshift(val);
+            return true;
+        }
+        if (index==this.length) {
+            this.push(val);
+            return true;
+        }
+        Node currentNode = this.get(index);
+        Node prevNode = currentNode.prev;
+        newNode.next = currentNode;
+        newNode.prev = prevNode;
+        currentNode.prev = newNode;
+        prevNode.next = newNode;
+        this.length++;
+        return true;
+    }
+    public boolean remove(int index){
+        if (index<0||index>=this.length) return false;
+        if (index==0){
+            shift();
+        }
+        if (index==this.length-1){
+            pop();
+        }else {
+            Node removedNode = this.get(index);
+            removedNode.prev.next = removedNode.next;
+            removedNode.next.prev = removedNode.prev;
+            removedNode.next = null;
+            removedNode.prev = null;
+        }
+        this.length--;
+        return true;
+    }
 }
 
 
