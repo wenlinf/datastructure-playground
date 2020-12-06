@@ -84,6 +84,16 @@ class BinarySearchTree{
         traverse(this.root);
         return result;
     }
+    dfsInOrder(){
+        var result = [];
+        function traverse(node){
+            if(node.left) traverse(node.left);
+            result.push(node.val);
+            if(node.right) traverse(node.right);
+        }
+        traverse(this.root);
+        return result;
+    }
 }
 
 var tree = new BinarySearchTree();
