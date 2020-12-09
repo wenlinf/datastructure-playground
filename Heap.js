@@ -5,7 +5,7 @@ class MaxBinaryHeap{
     insert(val){
         this.values.push(val);
         var index = this.values.length-1;
-        while(Math.floor((index-1)/2)>=0&&this.values[index]>this.values[Math.floor((index-1)/2)]){
+        while(index > 0 &&this.values[index]>this.values[Math.floor((index-1)/2)]){
             var temp = this.values[Math.floor((index-1)/2)];
             this.values[Math.floor((index-1)/2)] = this.values[index];
             this.values[index] = temp;
