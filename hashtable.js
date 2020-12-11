@@ -28,6 +28,32 @@ class HashTable{
         }
         return undefined;
     }
+     keys(){
+        var keysArr = [];
+        for(var i =0; i<this.keyMap.length;i++){
+            if(this.keyMap[i]){
+                for(var j = 0;j<this.keyMap[i].length;j++){
+                    if(!keysArr.includes(this.keyMap[i][j][0])){
+                        keysArr.push(this.keyMap[i][j][0]);
+                    }
+                }
+            }
+        }
+        return keysArr;
+    }
+    values(){
+        var vals = [];
+        for(var i =0; i<this.keyMap.length;i++){
+            if(this.keyMap[i]){
+                for(var j = 0;j<this.keyMap[i].length;j++){
+                    if(!vals.includes(this.keyMap[i][j][1])){
+                        vals.push(this.keyMap[i][j][1]);
+                    }
+                }
+            }    
+        }
+        return vals;
+    }
 }
 
 let ht = new HashTable(17);
