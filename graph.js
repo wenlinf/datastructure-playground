@@ -24,8 +24,6 @@ class Graph{
         }
         delete this.adjacencyList[vertex];
     }
-
-    
 }
 
 let g = new Graph();
