@@ -24,6 +24,25 @@ class Graph{
         }
         delete this.adjacencyList[vertex];
     }
+    DFSrecursive(vertex){
+        var visited = {};
+        var result = [];
+        var adjacencyList = this.adjacencyList
+        function recursiveHelper(vertex){
+            if(!vertex) return null;
+            if(!adjacencyList[vertex]) return vertex;
+            visited[vertex] = true;
+            result.push(vertex);
+            for(var i =0;i<adjacencyList[vertex].length;i++){
+                if(visited[adjacencyList[vertex][i]]!==true){
+                    recursiveHelper(adjacencyList[vertex][i]); 
+                }
+            }
+        }
+        recursiveHelper(vertex);
+        return result;
+    }
+    
 }
 
 let g = new Graph();
