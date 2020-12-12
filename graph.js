@@ -27,14 +27,13 @@ class Graph{
     DFSrecursive(vertex){
         var visited = {};
         var result = [];
-        var adjacencyList = this.adjacencyList
+        var adjacencyList = this.adjacencyList;
         function recursiveHelper(vertex){
             if(!vertex) return null;
-            if(!adjacencyList[vertex]) return vertex;
             visited[vertex] = true;
             result.push(vertex);
             for(var i =0;i<adjacencyList[vertex].length;i++){
-                if(visited[adjacencyList[vertex][i]]!==true){
+                if(!visited[adjacencyList[vertex][i]]){
                     recursiveHelper(adjacencyList[vertex][i]); 
                 }
             }
