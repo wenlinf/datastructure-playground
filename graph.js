@@ -61,6 +61,53 @@ class Graph{
         }
         return result;
     }
+    bfsiterative(start){
+        var stack = [start];
+        var visited = {};
+        var result = [];
+        var currentVertex;
+        //while(stack.length!==0){
+        while(stack.length){
+            currentVertex = stack.shift();
+            visited[currentVertex] = true;
+            result.push(currentVertex);
+            var neighbours = this.adjacencyList[currentVertex];
+            for(var i = 0;i<neighbours.length;i++){
+                if(!visited[neighbours[i]]){
+                    visited[neighbours[i]] = true;
+                    stack.push(neighbours[i]);
+                }
+            }
+        }
+        return result;
+    }
+    bfs(start){
+        var queue = [start];
+        var visited = {};
+        var result = [];
+        var currentVertex;
+        while(queue.length){
+            currentVertex = queue.shift();
+            visited[currentVertex] = true;
+            result.push(currentVertex);
+            // var neighbours = this.adjacencyList[currentVertex];
+            // for(var i = 0;i<neighbours.length;i++){
+            //     if(!visited[neighbours[i]]){
+            //         visited[neighbours[i]] = true;
+            //         queue.push(neighbours[i]);
+            //     }
+            // }
+            if(this.adjacencyList[currentVertex].length!==0){
+                this.adjacencyList[currentVertex].forEach(neighbour => {
+                     if(!visited[neighbour]){
+                         visited[neighbour] = true;
+                         queue.push(neighbour);
+                     }
+                 })
+             }
+        }
+        return result;
+    }
 }
 
 let g = new Graph();
