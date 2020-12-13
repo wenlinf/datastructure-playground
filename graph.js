@@ -41,13 +41,50 @@ class Graph{
         recursiveHelper(vertex);
         return result;
     }
-    
+    DFSiterative(start){
+        var stack = [start];
+        var visited = {};
+        var result = [];
+        var currentVertex;
+        //while(stack.length!==0){
+        while(stack.length){
+            currentVertex = stack.pop();
+            visited[currentVertex] = true;
+            result.push(currentVertex);
+            var neighbours = this.adjacencyList[currentVertex];
+            for(var i = 0;i<neighbours.length;i++){
+                if(!visited[neighbours[i]]){
+                    visited[neighbours[i]] = true;
+                    stack.push(neighbours[i]);
+                }
+            }
+        }
+        return result;
+    }
 }
 
 let g = new Graph();
-g.addVertex("Dallas");
-g.addVertex("Tokyo");
-g.addVertex("Aspen");
-g.addEdge("Dallas", "Tokyo");
-g.addEdge("Dallas", "Aspen");
 
+g.addVertex("A")
+g.addVertex("B")
+g.addVertex("C")
+g.addVertex("D")
+g.addVertex("E")
+g.addVertex("F")
+
+
+g.addEdge("A", "B")
+g.addEdge("A", "C")
+g.addEdge("B","D")
+g.addEdge("C","E")
+g.addEdge("D","E")
+g.addEdge("D","F")
+g.addEdge("E","F")
+g.DFSrecursive("A")
+//          A
+//        /   \
+//       B     C
+//       |     |
+//       D --- E
+//        \   /
+//          F
